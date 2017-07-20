@@ -9,6 +9,7 @@ import com.lxx.gankforkotlin.base.BaseFragment
 import com.lxx.gankforkotlin.mvp.contract.GirlContract
 import com.lxx.gankforkotlin.mvp.model.bean.GirlBean.ResultsBean
 import com.lxx.gankforkotlin.mvp.presenter.GirlPresenter
+import com.tt.lvruheng.eyepetizer.utils.showToast
 import kotlinx.android.synthetic.main.fragment_girl.*
 
 /**
@@ -88,6 +89,12 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
     override fun onRefresh() {
         page = 1
         girlPresenter?.requestData()
+    }
+
+    override fun showEorr() {
+        context.showToast("报错了")
+        refresh_layout_girl.isRefreshing = false
+        adapter?.hideFootView()
     }
 }
 

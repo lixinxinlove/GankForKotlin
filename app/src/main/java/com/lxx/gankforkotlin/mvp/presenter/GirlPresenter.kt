@@ -30,17 +30,33 @@ class GirlPresenter(context: Context, view: GirlContract.View) : GirlContract.Pr
     override fun requestData() {
         mView?.showRefresh()
         val observable: Observable<GirlBean>? = mContext?.let { mModel.loadData(it) }
-        observable?.applySchedulers()?.subscribe { girlBean: GirlBean ->
+        observable?.applySchedulers()?.subscribe({ girlBean: GirlBean ->
             mView?.setData(girlBean.results as MutableList<GirlBean.ResultsBean>)
-        }
+        }, { v -> mView?.showEorr() })
+
+
     }
+
+//    fun moreData(page: Int) {
+//        mView?.showRefresh()
+//        val observable: Observable<GirlBean>? = mContext?.let { mModel.loadMoreData(it, page) }
+//        observable?.applySchedulers()?.subscribe { girlBean: GirlBean ->
+//            mView?.setMoreData(girlBean.results as MutableList<GirlBean.ResultsBean>)
+//        }
+//    }
 
     fun moreData(page: Int) {
         mView?.showRefresh()
         val observable: Observable<GirlBean>? = mContext?.let { mModel.loadMoreData(it, page) }
-        observable?.applySchedulers()?.subscribe { girlBean: GirlBean ->
+        observable?.applySchedulers()?.subscribe({ girlBean: GirlBean ->
             mView?.setMoreData(girlBean.results as MutableList<GirlBean.ResultsBean>)
-        }
+
+        }, { x -> mView?.showEorr() }
+
+        )
+
+
     }
+
 
 }

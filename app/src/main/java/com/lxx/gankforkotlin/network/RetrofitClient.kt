@@ -19,7 +19,7 @@ class RetrofitClient private constructor(context: Context, baseUrl: String) {
     var cache: Cache? = null
     var okHttpClient: OkHttpClient? = null
     var retrofit: Retrofit? = null
-    val DEFAULT_TIMEOUT: Long = 20
+    val DEFAULT_TIMEOUT: Long = 10
     val url = baseUrl
 
     init {
@@ -51,7 +51,6 @@ class RetrofitClient private constructor(context: Context, baseUrl: String) {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(url)
                 .build()
-
     }
 
     companion object {
@@ -68,7 +67,6 @@ class RetrofitClient private constructor(context: Context, baseUrl: String) {
             }
             return instance!!
         }
-
 
     }
 

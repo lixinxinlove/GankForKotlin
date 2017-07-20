@@ -19,9 +19,17 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
     val ITEM: Int = 0
     val FOOT: Int = 1
 
+    var isHideFootView: Boolean = false
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         if (getItemViewType(position) == FOOT) {
             holder as FootViewHolder
+            if (isHideFootView) {
+                holder.itemView.visibility = View.GONE
+            } else {
+                holder.itemView.visibility = View.VISIBLE
+            }
+
         } else if (getItemViewType(position) == ITEM) {
             holder as GirdViewHolder
             holder?.tv_text?.text = list!![position]?.url
@@ -60,6 +68,7 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
     class GirdViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var iv_photo: ImageView? = null
         var tv_text: TextView? = null
+
         init {
             iv_photo = itemView.findViewById(R.id.iv_photo)
             tv_text = itemView.findViewById(R.id.tv_text)
@@ -68,8 +77,21 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
 
     class FootViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var progressBar: ProgressBar? = null
+
         init {
             progressBar = itemView.findViewById(R.id.progressBar)
         }
     }
+
+    fun hideFootView() {
+        isHideFootView = true
+        this.notifyItemChanged(list!!.size)
+    }
+
+    fun showFootView() {
+        isHideFootView = true
+        this.notifyItemChanged(list!!.size)
+    }
+
+
 }

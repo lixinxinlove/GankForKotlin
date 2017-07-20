@@ -17,6 +17,8 @@ interface GirlContract {
 
         fun showRefresh()
 
+        fun showEorr()
+
     }
 
     interface Presenter : BasePresenter {
