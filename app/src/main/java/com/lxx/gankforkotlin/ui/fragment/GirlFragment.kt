@@ -35,7 +35,7 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
     override fun initView() {
 
         girlPresenter = GirlPresenter(context, this)
-        girlPresenter?.start()
+
 
         adapter = GirlAdapter(context, mList)
         recycler_view_girl.layoutManager = LinearLayoutManager(context)
@@ -65,6 +65,13 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
         })
 
     }
+
+    override fun onFragmentVisiableChange(b: Boolean) {
+
+        girlPresenter?.start()
+
+    }
+
 
     override fun setData(beans: MutableList<ResultsBean>) {
         refresh_layout_girl.isRefreshing = false

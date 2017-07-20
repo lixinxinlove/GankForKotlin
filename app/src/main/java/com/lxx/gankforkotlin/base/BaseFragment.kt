@@ -49,7 +49,6 @@ abstract class BaseFragment : Fragment() {
 
     }
 
-
     abstract fun getLayoutResources(): Int
 
     abstract fun initView()

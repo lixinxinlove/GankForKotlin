@@ -1,5 +1,6 @@
 package com.lxx.gankforkotlin.network
 
+import com.lxx.gankforkotlin.mvp.model.bean.AndroidBean
 import com.lxx.gankforkotlin.mvp.model.bean.GirlBean
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -15,10 +16,11 @@ interface ApiService {
             get() = "http://gank.io/api/data/"
     }
 
-
-    //获取首页第一页数据
     @GET("福利/{limit}/{page}")
     fun getGirlData(@Path("limit") limit: Int, @Path("page") page: Int?): Observable<GirlBean>
 
+
+    @GET("Android/{limit}/{page}")
+    fun getAndroidData(@Path("limit") limit: Int, @Path("page") page: Int?): Observable<AndroidBean>
 
 }
