@@ -12,6 +12,11 @@ interface GirlContract {
     interface View : BaseView<Presenter> {
 
         fun setData(beans: MutableList<GirlBean.ResultsBean>)
+
+        fun setMoreData(beans: MutableList<GirlBean.ResultsBean>)
+
+        fun showRefresh()
+
     }
 
     interface Presenter : BasePresenter {

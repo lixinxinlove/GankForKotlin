@@ -17,4 +17,10 @@ class GirlModel {
         return apiService?.getGirlData(10, 1)
     }
 
+    fun loadMoreData(context: Context, page: Int): Observable<GirlBean>? {
+        val retrofitClient = RetrofitClient.getInstance(context, ApiService.BASE_URL)
+        val apiService = retrofitClient.create(ApiService::class.java)
+        return apiService?.getGirlData(10, page)
+    }
+
 }

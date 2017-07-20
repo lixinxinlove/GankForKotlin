@@ -7,16 +7,15 @@ import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.ui.fragment.AndroidFragment
 import com.lxx.gankforkotlin.ui.fragment.GirlFragment
 import com.lxx.gankforkotlin.ui.fragment.VideoFragment
+import com.tt.lvruheng.eyepetizer.utils.showToast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    // private var mTextMessage: TextView? = null
-
+    private var mExitTime: Long = 0
     private var androidFragment: AndroidFragment? = null
     private var girlFragment: GirlFragment? = null
     private var videoFragment: VideoFragment? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +23,8 @@ class MainActivity : AppCompatActivity() {
         // mTextMessage = findViewById(R.id.message) as TextView
         val navigation = findViewById(R.id.navigation) as BottomNavigationView
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
         initFragment()
-
         initView()
-
     }
 
     private fun initView() {
@@ -83,5 +79,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
         false
+    }
+
+    override fun onBackPressed() {
+        if (System.currentTimeMillis().minus(mExitTime) <= 3000) {
+            finish()
+        } else {
+            mExitTime = System.currentTimeMillis()
+            showToast("再按一次退出程序")
+        }
     }
 }

@@ -12,7 +12,6 @@ import io.reactivex.Observable
  */
 class GirlPresenter(context: Context, view: GirlContract.View) : GirlContract.Presenter {
 
-
     var mContext: Context? = null
     var mView: GirlContract.View? = null
     val mModel: GirlModel by lazy {
@@ -29,12 +28,19 @@ class GirlPresenter(context: Context, view: GirlContract.View) : GirlContract.Pr
     }
 
     override fun requestData() {
+        mView?.showRefresh()
         val observable: Observable<GirlBean>? = mContext?.let { mModel.loadData(it) }
         observable?.applySchedulers()?.subscribe { girlBean: GirlBean ->
             mView?.setData(girlBean.results as MutableList<GirlBean.ResultsBean>)
-
-           // Log.e("lee", girlBean.results?.get(0)?.url)
-
         }
     }
+
+    fun moreData(page: Int) {
+        mView?.showRefresh()
+        val observable: Observable<GirlBean>? = mContext?.let { mModel.loadMoreData(it, page) }
+        observable?.applySchedulers()?.subscribe { girlBean: GirlBean ->
+            mView?.setMoreData(girlBean.results as MutableList<GirlBean.ResultsBean>)
+        }
+    }
+
 }
