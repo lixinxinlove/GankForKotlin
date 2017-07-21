@@ -32,7 +32,7 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
 
         } else if (getItemViewType(position) == ITEM) {
             holder as GirdViewHolder
-            holder?.tv_text?.text = list!![position]?.url
+            holder?.tv_text?.text = list!![position]?.who
             ImageLoadUtils.display(context!!, holder?.iv_photo!!, list!![position]?.url!!)
         }
     }
