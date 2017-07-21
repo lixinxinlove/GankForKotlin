@@ -8,6 +8,7 @@ import com.lxx.gankforkotlin.base.BaseFragment
 import com.lxx.gankforkotlin.mvp.contract.AndroidContract
 import com.lxx.gankforkotlin.mvp.model.bean.AndroidBean
 import com.lxx.gankforkotlin.mvp.presenter.AndroidPresenter
+import com.tt.lvruheng.eyepetizer.utils.showToast
 import kotlinx.android.synthetic.main.fragment_android.*
 
 /**
@@ -56,6 +57,7 @@ class AndroidFragment : BaseFragment(), AndroidContract.View, SwipeRefreshLayout
     }
 
     override fun showError() {
+        context.showToast("网络异常")
     }
 
 

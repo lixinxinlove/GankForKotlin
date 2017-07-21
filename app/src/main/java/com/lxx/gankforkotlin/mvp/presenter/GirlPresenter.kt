@@ -32,7 +32,7 @@ class GirlPresenter(context: Context, view: GirlContract.View) : GirlContract.Pr
         val observable: Observable<GirlBean>? = mContext?.let { mModel.loadData(it) }
         observable?.applySchedulers()?.subscribe({ girlBean: GirlBean ->
             mView?.setData(girlBean.results as MutableList<GirlBean.ResultsBean>)
-        }, { v -> mView?.showEorr() })
+        }, { x-> mView?.showEorr() })
 
 
     }

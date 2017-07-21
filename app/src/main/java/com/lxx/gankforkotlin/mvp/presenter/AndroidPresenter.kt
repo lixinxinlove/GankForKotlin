@@ -32,7 +32,7 @@ class AndroidPresenter(context: Context, view: AndroidContract.View) : AndroidCo
         val observable: Observable<AndroidBean>? = mContext?.let { mModel.loadData(it) }
         observable?.applySchedulers()?.subscribe({ androidBean: AndroidBean ->
             mView?.setData(androidBean.results as MutableList<AndroidBean.ResultsBean>)
-        })
+        }, { x -> mView?.showError() })
 
     }
 

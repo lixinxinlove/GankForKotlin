@@ -9,7 +9,6 @@
         android:id="@+id/tool_bar_web"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-
         android:background="@color/colorPrimary"
         app:navigationIcon="@mipmap/back"
         app:title="llll"

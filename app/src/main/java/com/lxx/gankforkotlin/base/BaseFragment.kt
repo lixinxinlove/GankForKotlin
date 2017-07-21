@@ -33,6 +33,7 @@ abstract class BaseFragment : Fragment() {
         if (rootView == null) {
             return
         }
+
         //可见，并且没有加载过
         if (!isFirst && isFragmentVisiable) {
             onFragmentVisiableChange(true)

@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.fragment_girl.*
  */
 class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRefreshListener {
 
+    var isFirstShow: Boolean = false
+
     private var page: Int = 1
 
     var mList: MutableList<ResultsBean>? = mutableListOf() //初始化 List
@@ -35,7 +37,6 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
     override fun initView() {
 
         girlPresenter = GirlPresenter(context, this)
-
 
         adapter = GirlAdapter(context, mList)
         recycler_view_girl.layoutManager = LinearLayoutManager(context)
@@ -66,10 +67,12 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
 
     }
 
-    override fun onFragmentVisiableChange(b: Boolean) {
-
-        girlPresenter?.start()
-
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (hidden && !isFirstShow) {
+            girlPresenter?.start()
+            isFirstShow = true
+        }
     }
 
 
@@ -99,7 +102,7 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
     }
 
     override fun showEorr() {
-        context.showToast("报错了")
+        context.showToast("网络异常")
         refresh_layout_girl.isRefreshing = false
         adapter?.hideFootView()
     }

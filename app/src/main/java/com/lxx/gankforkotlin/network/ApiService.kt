@@ -2,6 +2,7 @@ package com.lxx.gankforkotlin.network
 
 import com.lxx.gankforkotlin.mvp.model.bean.AndroidBean
 import com.lxx.gankforkotlin.mvp.model.bean.GirlBean
+import com.lxx.gankforkotlin.mvp.model.bean.VideoBean
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -19,8 +20,10 @@ interface ApiService {
     @GET("福利/{limit}/{page}")
     fun getGirlData(@Path("limit") limit: Int, @Path("page") page: Int?): Observable<GirlBean>
 
-
     @GET("Android/{limit}/{page}")
     fun getAndroidData(@Path("limit") limit: Int, @Path("page") page: Int?): Observable<AndroidBean>
+
+    @GET("休息视频/{limit}/{page}")
+    fun getVideoData(@Path("limit") limit: Int, @Path("page") page: Int?): Observable<VideoBean>
 
 }
