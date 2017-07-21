@@ -9,6 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
 import com.lxx.gankforkotlin.R
+import com.lxx.gankforkotlin.utils.FileUtil
 import kotlinx.android.synthetic.main.activity_splash.*
 
 /**
@@ -20,6 +21,11 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
+
+
+        FileUtil.saveVersionToFile()
+
+        tv_title.text = FileUtil.readVersionForFile()
 
         setAnimation()
     }
