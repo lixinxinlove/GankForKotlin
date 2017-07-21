@@ -1,6 +1,10 @@
 package com.lxx.gankforkotlin.adapter
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +13,9 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.mvp.model.bean.GirlBean
+import com.lxx.gankforkotlin.ui.activity.GirlDetailsActivity
 import com.tt.lvruheng.eyepetizer.utils.ImageLoadUtils
+
 
 /**
  * Created by android on 2017/7/19.
@@ -29,11 +35,20 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
             } else {
                 holder.itemView.visibility = View.VISIBLE
             }
-
         } else if (getItemViewType(position) == ITEM) {
             holder as GirdViewHolder
             holder?.tv_text?.text = list!![position]?.who
             ImageLoadUtils.display(context!!, holder?.iv_photo!!, list!![position]?.url!!)
+
+            holder.itemView.setOnClickListener {
+
+                //共享动画
+                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(context as Activity, holder.iv_photo, "lee")
+                val intent = Intent(context, GirlDetailsActivity::class.java)
+                intent?.putExtra("url", list!![position].url)
+                ActivityCompat.startActivity(context, intent, options.toBundle())
+
+            }
         }
     }
 

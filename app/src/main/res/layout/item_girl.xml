@@ -4,6 +4,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:transitionName="lee"
         android:id="@+id/iv_photo"
         android:layout_width="match_parent"
         android:layout_height="500dp"

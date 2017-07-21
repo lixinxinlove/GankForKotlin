@@ -26,7 +26,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
+    testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     //引入okhttp
@@ -37,10 +37,8 @@ dependencies {
     //引入json转换器，方便将返回的数据转换为json格式
     //引入rxandroid
     //rxdownload
-    
-
     //glide
-    
+
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:design:26.0.0-alpha1'
@@ -56,5 +54,6 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'zlc.season:rxdownload2:2.0.4'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    testCompile 'junit:junit:4.12'
+    compile 'com.github.chrisbanes:PhotoView:2.1.2'
+
 }

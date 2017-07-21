@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.MainActivity" />
-        <activity android:name=".ui.activity.WebActivity"></activity>
+        <activity android:name=".ui.activity.WebActivity" />
+        <activity android:name=".ui.activity.GirlDetailsActivity"></activity>
     </application>
 
 </manifest>
