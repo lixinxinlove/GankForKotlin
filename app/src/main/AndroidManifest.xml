@@ -26,7 +26,8 @@
         </activity>
         <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.WebActivity" />
-        <activity android:name=".ui.activity.GirlDetailsActivity"></activity>
+        <activity android:name=".ui.activity.GirlDetailsActivity" />
+        <activity android:name=".ui.activity.VideoDetailsActivity"></activity>
     </application>
 
 </manifest>

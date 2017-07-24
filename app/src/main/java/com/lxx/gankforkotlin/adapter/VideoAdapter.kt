@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.mvp.model.bean.VideoBean
-import com.lxx.gankforkotlin.ui.activity.WebActivity
+import com.lxx.gankforkotlin.ui.activity.VideoDetailsActivity
 
 /**
  * Created by android on 2017/7/19.
@@ -23,7 +23,7 @@ class VideoAdapter(var context: Context?, var list: MutableList<VideoBean.Result
 
         holder?.itemView?.setOnClickListener {
 
-            var intent = Intent(context, WebActivity::class.java)
+            var intent = Intent(context, VideoDetailsActivity::class.java)
             intent.putExtra("url", list!![position].url)
             context?.startActivity(intent)
 

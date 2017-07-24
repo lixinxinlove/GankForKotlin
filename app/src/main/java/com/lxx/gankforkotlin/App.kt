@@ -8,7 +8,7 @@ import android.content.Context
  */
 class App : Application() {
 
-    companion object {
+    companion object { //伴随 对象
         var context: Context? = null
     }
 
