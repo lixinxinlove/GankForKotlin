@@ -54,7 +54,8 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
                 var lastPositon = layoutManager.findLastVisibleItemPosition()
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastPositon == mList?.size) {
                     if (!loading) {
-                        girlPresenter?.moreData(page++)
+                        page++
+                        girlPresenter?.moreData(page)
                         loading = true
                     }
                 }
@@ -85,7 +86,6 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
     }
 
     override fun setMoreData(beans: MutableList<ResultsBean>) {
-        refresh_layout_girl.isRefreshing = false
         mList?.addAll(beans)
         adapter?.list = mList
         adapter?.notifyDataSetChanged()

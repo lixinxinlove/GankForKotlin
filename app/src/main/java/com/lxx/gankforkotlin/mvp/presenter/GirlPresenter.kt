@@ -32,7 +32,7 @@ class GirlPresenter(context: Context, view: GirlContract.View) : GirlContract.Pr
         val observable: Observable<GirlBean>? = mContext?.let { mModel.loadData(it) }
         observable?.applySchedulers()?.subscribe({ girlBean: GirlBean ->
             mView?.setData(girlBean.results as MutableList<GirlBean.ResultsBean>)
-        }, { x-> mView?.showEorr() })
+        }, { x -> mView?.showEorr() })
 
 
     }
@@ -46,7 +46,7 @@ class GirlPresenter(context: Context, view: GirlContract.View) : GirlContract.Pr
 //    }
 
     fun moreData(page: Int) {
-        mView?.showRefresh()
+
         val observable: Observable<GirlBean>? = mContext?.let { mModel.loadMoreData(it, page) }
         observable?.applySchedulers()?.subscribe({ girlBean: GirlBean ->
             mView?.setMoreData(girlBean.results as MutableList<GirlBean.ResultsBean>)
