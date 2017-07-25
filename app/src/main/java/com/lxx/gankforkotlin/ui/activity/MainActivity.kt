@@ -1,8 +1,10 @@
 package com.lxx.gankforkotlin.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import com.lxx.baselibrary.activity.ImageActivity
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.ui.fragment.AndroidFragment
 import com.lxx.gankforkotlin.ui.fragment.GirlFragment
@@ -25,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         initFragment()
         initView()
+
+        tv_menu.setOnClickListener { startActivity(Intent(MainActivity@this,ImageActivity::class.java)) }
+
     }
 
     private fun initView() {

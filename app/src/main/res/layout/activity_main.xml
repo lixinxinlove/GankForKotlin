@@ -20,16 +20,26 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:textColor="@android:color/white"
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
 
-        </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:padding="5dp"
+                android:text="菜单"
+                android:textColor="@android:color/white" />
 
+        </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
 

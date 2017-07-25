@@ -36,10 +36,10 @@ class RetrofitClient private constructor(context: Context, baseUrl: String) {
         }
         //okhttp创建了
         okHttpClient = OkHttpClient.Builder()
-             //   .addNetworkInterceptor(
+                //   .addNetworkInterceptor(
                 //        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-              //  .cache(cache)
-               // .addInterceptor(CacheInterceptor(context))
+                //  .cache(cache)
+                // .addInterceptor(CacheInterceptor(context))
                 //.addNetworkInterceptor(CacheInterceptor(context))
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
@@ -76,4 +76,8 @@ class RetrofitClient private constructor(context: Context, baseUrl: String) {
         }
         return retrofit?.create(service)
     }
+}
+
+fun RetrofitClient.add(x: Int, y: Int): Int {
+    return x + y
 }
