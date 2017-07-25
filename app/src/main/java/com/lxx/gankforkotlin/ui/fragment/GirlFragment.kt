@@ -86,6 +86,7 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
     }
 
     override fun setMoreData(beans: MutableList<ResultsBean>) {
+
         mList?.addAll(beans)
         adapter?.list = mList
         adapter?.notifyDataSetChanged()
