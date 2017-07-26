@@ -12,7 +12,7 @@ import java.io.FileOutputStream
 object FileUtil {
 
     fun saveVersionToFile() {
-        val fileContent = "晶晶"
+        val fileContent = "妹子"
         val outputStream: FileOutputStream
         try {
             outputStream = App.context!!.openFileOutput("version", Context.MODE_PRIVATE)
