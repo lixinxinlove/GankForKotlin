@@ -65,4 +65,10 @@ class WebActivity : AppCompatActivity() {
 
     }
 
+    override fun onDestroy() {
+        web_view.removeAllViews()  //销毁 webView  防止内存泄露
+        web_view.destroy()
+        super.onDestroy()
+    }
+
 }

@@ -11,5 +11,11 @@ class ImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image)
         tv.text = "lixinxin"
+
+
+
+
+
+
     }
 }
