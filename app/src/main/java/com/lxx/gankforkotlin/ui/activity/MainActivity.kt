@@ -2,13 +2,15 @@ package com.lxx.gankforkotlin.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Message
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import com.lxx.baselibrary.activity.ImageActivity
+import com.lxx.baselibrary.activity.RxJavaActivity
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.ui.fragment.AndroidFragment
 import com.lxx.gankforkotlin.ui.fragment.GirlFragment
 import com.lxx.gankforkotlin.ui.fragment.VideoFragment
+import com.lxx.sdklibrary.ServiceRun
 import com.tt.lvruheng.eyepetizer.utils.showToast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,7 +30,18 @@ class MainActivity : AppCompatActivity() {
         initFragment()
         initView()
 
-        tv_menu.setOnClickListener { startActivity(Intent(MainActivity@this,ImageActivity::class.java)) }
+        tv_menu.setOnClickListener { startActivity(Intent(MainActivity@ this, RxJavaActivity::class.java)) }
+
+
+        var serviceRun = ServiceRun.getInstance(this)
+        var thread = Thread(serviceRun)
+
+        thread.start()
+
+        var msg = Message()
+        msg.what = 1
+        msg.obj = "来自家里的问候"
+     //   serviceRun.handler.sendMessage(msg)
 
     }
 

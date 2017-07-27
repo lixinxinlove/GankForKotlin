@@ -30,11 +30,13 @@ class AndroidPresenter(context: Context, view: AndroidContract.View) : AndroidCo
 
     override fun requestData() {
         mView?.showRefresh()
-        val observable: Observable<AndroidBean>? = mContext?.let { mModel.loadData(it) }
-        observable?.applySchedulers()?.subscribe({ androidBean: AndroidBean ->
-            mView?.setData(androidBean.results as MutableList<AndroidBean.ResultsBean>)
-        }, { x -> mView?.showError() })
 
+        val observable: Observable<AndroidBean>? = mContext?.let { mModel.loadData(it) }
+        observable?.applySchedulers()?.subscribe(
+                { androidBean: AndroidBean ->
+                    mView?.setData(androidBean.results as MutableList<AndroidBean.ResultsBean>)
+                },
+                { x -> mView?.showError() })
     }
 
 }

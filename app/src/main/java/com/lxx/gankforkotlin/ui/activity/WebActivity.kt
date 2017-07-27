@@ -54,6 +54,9 @@ class WebActivity : AppCompatActivity() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 progress_bar_web.visibility = View.GONE
+
+                //  val i = 1 / 0   测试多进程报错
+
             }
 
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {

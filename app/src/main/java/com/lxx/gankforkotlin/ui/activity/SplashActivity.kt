@@ -21,12 +21,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
-
-
         FileUtil.saveVersionToFile()
-
         tv_title.text = FileUtil.readVersionForFile()
-
         setAnimation()
     }
 
@@ -43,11 +39,9 @@ class SplashActivity : AppCompatActivity() {
         root_view.startAnimation(animationSet)
         animationSet.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationRepeat(animation: Animation?) {
-
             }
 
             override fun onAnimationStart(animation: Animation?) {
-
             }
 
             override fun onAnimationEnd(animation: Animation?) {
