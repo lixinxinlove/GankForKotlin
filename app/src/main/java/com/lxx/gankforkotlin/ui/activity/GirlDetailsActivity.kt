@@ -27,6 +27,6 @@ class GirlDetailsActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        ImageLoadUtils.display(this, photo_view, url!!)
+        ImageLoadUtils.display2(this, photo_view, url!!)
     }
 }

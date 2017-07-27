@@ -9,9 +9,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
 import com.lxx.gankforkotlin.R
+import com.lxx.gankforkotlin.holder.FootViewHolder
 import com.lxx.gankforkotlin.mvp.model.bean.GirlBean
 import com.lxx.gankforkotlin.ui.activity.GirlDetailsActivity
 import com.tt.lvruheng.eyepetizer.utils.ImageLoadUtils
@@ -47,13 +47,11 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
                 val intent = Intent(context, GirlDetailsActivity::class.java)
                 intent?.putExtra("url", list!![position].url)
                 ActivityCompat.startActivity(context, intent, options.toBundle())
-
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-
         if (viewType == FOOT) {
             var view = View.inflate(context, R.layout.item_foot, null)
             return FootViewHolder(view)
@@ -69,7 +67,6 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
         } else {
             return list!!.size + 1
         }
-
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -83,18 +80,9 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
     class GirdViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var iv_photo: ImageView? = null
         var tv_text: TextView? = null
-
         init {
             iv_photo = itemView.findViewById(R.id.iv_photo)
             tv_text = itemView.findViewById(R.id.tv_text)
-        }
-    }
-
-    class FootViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var progressBar: ProgressBar? = null
-
-        init {
-            progressBar = itemView.findViewById(R.id.progressBar)
         }
     }
 
@@ -107,6 +95,4 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
         isHideFootView = true
         this.notifyItemChanged(list!!.size)
     }
-
-
 }

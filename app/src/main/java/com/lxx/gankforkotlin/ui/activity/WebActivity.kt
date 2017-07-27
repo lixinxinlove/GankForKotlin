@@ -12,20 +12,13 @@ import com.lxx.gankforkotlin.R
 import kotlinx.android.synthetic.main.activity_web.*
 
 class WebActivity : AppCompatActivity() {
-
-
     var url: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
-
         url = intent.getStringExtra("url")
-
         initView()
-
         tool_bar_web.setNavigationOnClickListener { finish() }
-
     }
 
     private fun initView() {
@@ -54,18 +47,14 @@ class WebActivity : AppCompatActivity() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 progress_bar_web.visibility = View.GONE
-
                 //  val i = 1 / 0   测试多进程报错
-
             }
-
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 return super.shouldOverrideUrlLoading(view, request)
+                //request?.url  //url
             }
         }
-
         web_view.loadUrl(url)
-
     }
 
     override fun onDestroy() {
@@ -73,5 +62,4 @@ class WebActivity : AppCompatActivity() {
         web_view.destroy()
         super.onDestroy()
     }
-
 }

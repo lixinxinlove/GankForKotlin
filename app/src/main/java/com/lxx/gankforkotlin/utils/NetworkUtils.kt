@@ -27,7 +27,7 @@ object NetworkUtils{
         val connectManager  = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo : NetworkInfo = connectManager.getNetworkInfo(typeMoblie)
         if(networkInfo==null){
-            return false;
+            return false
         }else{
             return  networkInfo.isConnected && networkInfo.isAvailable
         }

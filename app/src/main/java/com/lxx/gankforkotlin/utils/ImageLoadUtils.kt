@@ -36,6 +36,17 @@ class ImageLoadUtils {
                     // .error(R.drawable.ic_empty_picture)
                     .into(imageView)
         }
+
+
+        fun display2(context: Context, imageView: ImageView?, url: String) {
+            if (imageView == null) {
+                throw IllegalArgumentException("argument error")
+            }
+            Glide.with(context).load(url)
+                    .centerCrop()
+                    .into(imageView)
+        }
+
     }
 
 }
