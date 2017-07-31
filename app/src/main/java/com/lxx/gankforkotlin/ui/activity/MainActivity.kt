@@ -1,10 +1,13 @@
 package com.lxx.gankforkotlin.ui.activity
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Message
+import android.os.PersistableBundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.lxx.baselibrary.activity.RxJavaActivity
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.ui.fragment.AndroidFragment
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         var msg = Message()
         msg.what = 1
         msg.obj = "来自家里的问候"
-     //   serviceRun.handler.sendMessage(msg)
+        //   serviceRun.handler.sendMessage(msg)
 
     }
 
@@ -98,6 +101,18 @@ class MainActivity : AppCompatActivity() {
         }
         false
     }
+
+    override fun onMultiWindowModeChanged(isInMultiWindowMode: Boolean, newConfig: Configuration?) {
+        super.onMultiWindowModeChanged(isInMultiWindowMode, newConfig)
+        Log.e("MainActivity", "onMultiWindowModeChanged")
+    }
+
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState)
+        Log.e("MainActivity", "onRestoreInstanceState")
+    }
+
 
     override fun onBackPressed() {
         if (System.currentTimeMillis().minus(mExitTime) <= 3000) {
