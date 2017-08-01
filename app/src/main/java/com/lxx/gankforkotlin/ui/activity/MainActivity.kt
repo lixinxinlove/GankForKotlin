@@ -8,7 +8,6 @@ import android.os.PersistableBundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.lxx.baselibrary.activity.RxJavaActivity
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.ui.fragment.AndroidFragment
 import com.lxx.gankforkotlin.ui.fragment.GirlFragment
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         initFragment()
         initView()
 
-        tv_menu.setOnClickListener { startActivity(Intent(MainActivity@ this, RxJavaActivity::class.java)) }
+        tv_menu.setOnClickListener { startActivity(Intent(MainActivity@ this, ViewPagerActivity::class.java)) }
 
 
         var serviceRun = ServiceRun.getInstance(this)

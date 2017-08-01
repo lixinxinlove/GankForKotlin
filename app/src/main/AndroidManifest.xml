@@ -31,11 +31,11 @@
             android:name=".ui.activity.WebActivity"
             android:process=":remote" />
 
-        <!--android:process=":remote"-->
+        <!-- android:process=":remote" -->
         <activity android:name=".ui.activity.GirlDetailsActivity" />
         <activity android:name=".ui.activity.VideoDetailsActivity" />
 
-        <!--7.0 文件共享-->
+        <!-- 7.0 文件共享 -->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileProvider"
@@ -46,6 +46,7 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
+        <activity android:name=".ui.activity.ViewPagerActivity"></activity>
     </application>
 
 </manifest>
