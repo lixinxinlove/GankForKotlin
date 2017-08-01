@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.adapter.LeePagerAdapter
@@ -23,6 +24,7 @@ class ViewPagerActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
         init()
 
         view_pager.addOnPageChangeListener(this)
+        dynamic_line.setLocation(0,0,50,true)
     }
 
     private fun init() {
@@ -46,5 +48,23 @@ class ViewPagerActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
     override fun onPageSelected(position: Int) {
         Log.d(TAG, "position== ${position}")
+    }
+
+
+    var startX: Float = 0f
+    var stopX: Float = 0f
+
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        when (ev?.action) {
+            MotionEvent.ACTION_DOWN -> {
+                startX = ev.rawX
+            }
+            MotionEvent.ACTION_MOVE -> {
+                stopX = ev.rawX
+                dynamic_line.updateView(startX, stopX)
+            }
+        }
+        return super.dispatchTouchEvent(ev)
     }
 }

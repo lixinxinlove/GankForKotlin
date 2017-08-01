@@ -16,7 +16,6 @@ import com.lxx.gankforkotlin.mvp.model.bean.GirlBean
 import com.lxx.gankforkotlin.ui.activity.GirlDetailsActivity
 import com.tt.lvruheng.eyepetizer.utils.ImageLoadUtils
 
-
 /**
  * Created by android on 2017/7/19.
  */
