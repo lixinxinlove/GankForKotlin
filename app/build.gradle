@@ -12,6 +12,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
     }
     buildTypes {
         release {
@@ -27,7 +34,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile project(':baselibrary')
     compile project(':sdklibrary')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
@@ -47,4 +53,6 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:2.1.2'
     compile 'org.jsoup:jsoup:1.10.3'
     testCompile 'junit:junit:4.12'
+
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
 }

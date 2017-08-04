@@ -8,6 +8,7 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.utils.FileUtil
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -15,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_splash.*
 /**
  * 启动页
  */
+
+@Route(path = "/app/activity")
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

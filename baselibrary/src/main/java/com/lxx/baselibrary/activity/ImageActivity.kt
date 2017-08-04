@@ -2,8 +2,11 @@ package com.lxx.baselibrary.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.lxx.baselibrary.R
 import kotlinx.android.synthetic.main.activity_image.*
+
+
 
 class ImageActivity : AppCompatActivity() {
 
@@ -11,11 +14,5 @@ class ImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image)
         tv.text = "lixinxin"
-
-
-
-
-
-
     }
 }

@@ -1,6 +1,5 @@
 package com.lxx.gankforkotlin.ui.activity
 
-import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Message
@@ -8,6 +7,7 @@ import android.os.PersistableBundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.alibaba.android.arouter.launcher.ARouter
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.ui.fragment.AndroidFragment
 import com.lxx.gankforkotlin.ui.fragment.GirlFragment
@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         // mTextMessage = findViewById(R.id.message) as TextView
         val navigation = findViewById(R.id.navigation) as BottomNavigationView
@@ -32,8 +33,11 @@ class MainActivity : AppCompatActivity() {
         initFragment()
         initView()
 
-        tv_menu.setOnClickListener { startActivity(Intent(MainActivity@ this, ViewPagerActivity::class.java)) }
+        tv_menu.setOnClickListener {
+            //startActivity(Intent(MainActivity@ this, ViewPagerActivity::class.java))
+            ARouter.getInstance().build("/sdklibrary/MainActivity").navigation()
 
+        }
 
         var serviceRun = ServiceRun.getInstance(this)
         var thread = Thread(serviceRun)
@@ -57,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         videoFragment = VideoFragment()
 
         val fragmentTrans = supportFragmentManager.beginTransaction()
+
         fragmentTrans.add(R.id.content, androidFragment)
         fragmentTrans.add(R.id.content, girlFragment)
         fragmentTrans.add(R.id.content, videoFragment)
@@ -79,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                         .hide(videoFragment)
                         .commit()
 
-                return@OnNavigationItemSelectedListener true
+                //return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_girl -> {
                 tv_title.text = "妹子"
@@ -87,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                         .hide(androidFragment)
                         .hide(videoFragment)
                         .commit()
-                return@OnNavigationItemSelectedListener true
+                // return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_video -> {
                 tv_title.text = "休息视频"
@@ -95,21 +100,24 @@ class MainActivity : AppCompatActivity() {
                         .hide(androidFragment)
                         .hide(girlFragment)
                         .commit()
-                return@OnNavigationItemSelectedListener true
+                // return@OnNavigationItemSelectedListener true
             }
         }
-        false
+        true
     }
+
 
     override fun onMultiWindowModeChanged(isInMultiWindowMode: Boolean, newConfig: Configuration?) {
         super.onMultiWindowModeChanged(isInMultiWindowMode, newConfig)
         Log.e("MainActivity", "onMultiWindowModeChanged")
+        showToast("onMultiWindowModeChanged")
     }
 
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onRestoreInstanceState(savedInstanceState, persistentState)
         Log.e("MainActivity", "onRestoreInstanceState")
+        showToast("onRestoreInstanceState")
     }
 
 
