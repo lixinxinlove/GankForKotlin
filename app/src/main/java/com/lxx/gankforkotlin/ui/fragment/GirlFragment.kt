@@ -52,7 +52,7 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
                 super.onScrollStateChanged(recyclerView, newState)
                 var layoutManager: LinearLayoutManager = recyclerView?.layoutManager as LinearLayoutManager
                 var lastPositon = layoutManager.findLastVisibleItemPosition()
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastPositon == mList?.size) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastPositon == mList?.size!! + 1) {
                     if (!loading) {
                         page++
                         girlPresenter?.moreData(page)
