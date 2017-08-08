@@ -28,6 +28,12 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
 
     var isHideFootView: Boolean = false
 
+    var headerView: View? = null
+
+    fun addHeaderView(view: View) {
+        headerView = view
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         if (getItemViewType(position) == FOOT) {
             holder as FootViewHolder
@@ -57,8 +63,8 @@ class GirlAdapter(var context: Context?, var list: MutableList<GirlBean.ResultsB
             var view = View.inflate(context, R.layout.item_foot, null)
             return FootViewHolder(view)
         } else if (viewType == HEADER) {
-            var view = View.inflate(context, R.layout.item_header, null)
-            return HeaderViewHolder(view)
+            // var view = View.inflate(context, R.layout.item_header, null)
+            return HeaderViewHolder(headerView!!)
         } else {
             var view = View.inflate(context, R.layout.item_girl, null)
             return GirdViewHolder(view)

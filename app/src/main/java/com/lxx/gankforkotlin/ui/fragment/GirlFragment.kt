@@ -3,6 +3,7 @@ package com.lxx.gankforkotlin.ui.fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.adapter.GirlAdapter
 import com.lxx.gankforkotlin.base.BaseFragment
@@ -29,6 +30,7 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
 
     private var loading: Boolean = false
 
+    private var headView: View? = null
 
     override fun getLayoutResources(): Int {
         return R.layout.fragment_girl
@@ -36,9 +38,15 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
 
     override fun initView() {
 
+        headView = View.inflate(context, R.layout.item_header, null)
+
+
         girlPresenter = GirlPresenter(context, this)
 
         adapter = GirlAdapter(context, mList)
+
+        adapter?.addHeaderView(headView!!)
+
         recycler_view_girl.layoutManager = LinearLayoutManager(context)
         recycler_view_girl.adapter = adapter
 
