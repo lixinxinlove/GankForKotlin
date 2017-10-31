@@ -2,6 +2,7 @@ package com.lxx.gankforkotlin.ui.fragment
 
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.util.Log
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.adapter.VideoAdapter
 import com.lxx.gankforkotlin.base.BaseFragment
@@ -44,7 +45,8 @@ class VideoFragment : BaseFragment(), VideoContract.View, SwipeRefreshLayout.OnR
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if (hidden && isFirstShow) {
+        Log.e("lee2", hidden.toString())
+        if (!hidden && isFirstShow) {
             mPresenter?.start()
             isFirstShow = false
         }

@@ -3,7 +3,9 @@ package com.lxx.gankforkotlin.ui.fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import com.lxx.gankforkotlin.R
 import com.lxx.gankforkotlin.adapter.GirlAdapter
 import com.lxx.gankforkotlin.base.BaseFragment
@@ -40,6 +42,7 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
 
         headView = View.inflate(context, R.layout.item_header, null)
 
+        initHeadView()
 
         girlPresenter = GirlPresenter(context, this)
 
@@ -76,9 +79,15 @@ class GirlFragment : BaseFragment(), GirlContract.View, SwipeRefreshLayout.OnRef
 
     }
 
+    fun initHeadView() {
+        var image: ImageView = headView!!.findViewById(R.id.image)
+        image.setOnClickListener { x -> context.showToast("${x.id}点击的头部") }
+    }
+
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if (hidden && !isFirstShow) {
+        Log.e("lee1", hidden.toString())
+        if (!hidden && !isFirstShow) {
             girlPresenter?.start()
             isFirstShow = true
         }

@@ -11,6 +11,7 @@ class App : Application() {
 
     companion object { //伴随 对象
         var context: Context? = null
+
     }
 
     override fun onCreate() {
